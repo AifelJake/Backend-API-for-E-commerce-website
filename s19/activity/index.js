@@ -1,4 +1,4 @@
-console.lo("hello")
+console.log("hello")
 
 /*
     
@@ -15,6 +15,30 @@ console.lo("hello")
                 -if the user's role does not fall under any of the cases, as a default, return a message:
                     "Role out of range."
 */
+
+    
+    function login(username, password, role) {
+        if (username === '' || password === '' || role === '') {
+            return "You have a empty input"
+        } else {
+            switch (role) {
+            case "admin":
+                console.log("Welcome back to the class portal, admin!");
+                break;
+            case "teacher":
+                console.log("Thank you for logging in, teacher!");
+                break;
+            case "rookie":
+                console.log("Welcome to the class portal, student!")
+                break;
+            default:
+                console.log("Role out of range.");
+                break;
+            } 
+        }
+    }
+
+
 /*
     2. Create a function called checkAverage able to receive 4 numbers as arguments calculate its average and log a message for  the user about their letter equivalent in the console.
         -add parameters appropriate to describe the arguments.
@@ -48,7 +72,27 @@ console.lo("hello")
     Note: strictly follow the instructed function names.
 */
 
+    function checkAverage(score1, score2, score3, score4) {
+        let totalScore = score1 + score2 + score3 + score4;
+        let averaging = totalScore / 4
+    
+        let average = Math.round(averaging);
 
+        if (average === undefined || average <= 74) {
+            return "Hello, student, your average is " + average + " ." + " The letter equivalent is F";
+        } else if (average >= 75 && average <= 79) {
+            return "Hello, student, your average is " + average + ". " + "The letter equivalent is D.";
+        } else if ( average >= 80 && average <= 84) {
+            return "Hello, student, your average is " + average + ". " + "The letter equivalent is C.";
+        } else if ( average >= 90 && average <= 95 ) {
+            return "Hello, student, your average is " + average + ". " + "The letter equivalent is A.";
+        } else {
+            return "Hello, student, your average is " + average + ". " + "The letter equivalent is A+.";
+        }
+
+    }
+
+    console.log(checkAverage(80, 82, 83, 81));
 
 //Do not modify
 //For exporting to test.js
