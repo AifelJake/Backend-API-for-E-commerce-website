@@ -97,13 +97,21 @@ let friendsList = [];
 */
     
 
-    function displayFriends() {
-        for (let i = 0; i < friendsList.length; i++) {
-            console.log(friendsList[i]);
-        } if (friendsList === '') {
-            return "You currently have 0 friends. Add one first.";
+    function displayFriends(){
+
+
+        if(friendsList.length > 0){
+
+            friendsList.forEach(function(friend){
+                console.log(friend);
+            })
+
+
+        } else {
+           return `You have ${friendsList.length} friends. Add one first.`;
         }
-    }
+
+    };
 
 
     
