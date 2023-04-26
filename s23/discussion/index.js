@@ -246,11 +246,12 @@ console.log(trainer["pokemon"]);
 trainer.talk();
 
 
-function Pokemon(name, level){
+function Pokemon(name, level, type){
 	this.name = name;
 	this.level = level;
 	this.health = 2 * level;
 	this.attack = level;
+	this.type = type;
 
 	// Methods
 	this.tackle = function(target) {
