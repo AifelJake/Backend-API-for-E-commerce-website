@@ -20,12 +20,12 @@ db.fruits.aggregate([
 
 db.fruits.aggregate([
 	{$match: {onSale: true}},
-	{$group: {_id: "$supplier_id", avg_price: {$max: "$price"}}},
+	{$group: {_id: "$supplier_id", max_price: {$max: "$price"}}},
 ]);
 
 db.fruits.aggregate([
 	{$match: {onSale: true}},
-	{$group: {_id: "$supplier_id", avg_price: {$min: "$price"}}},
+	{$group: {_id: "$supplier_id", min_price: {$min: "$price"}}},
 ]);
 
 
