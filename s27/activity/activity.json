@@ -1,0 +1,39 @@
+// Users
+{
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johndoe@mail.com",
+    "password": "john1234",
+    "isAdmin": false,
+    "mobileNo": "09237593671"
+}
+
+// Orders
+{
+    "id": 10,
+    "userId": 1,
+    "transactionDate": "08-15-2021",
+    "status": "paid",
+    "total": 1500
+}
+
+// Products
+{
+    "id": 25,
+    "name": "Humidifier",
+    "description": "Make your home smell fresh any time.",
+    "price": 300,
+    "stocks": 1286,
+    "isActive": true,
+    "sku": "052321-SMHMD"
+}
+
+// Order Products
+{
+    "orderId": 10,
+    "productId": 25,
+    "quantity": 1,
+    "price": 300,
+    "subTotal": 300
+}
