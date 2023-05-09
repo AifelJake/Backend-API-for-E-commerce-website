@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
 	},
 	isAdmin : {
 		type : Boolean,
-		dafault : false
+		default : false
 	},
 	mobileNo : {
 		type : String,
@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
 	},
 	enrollments : [
 			{
-				course : {
+				courseId : {
 					type : String,
 					required : [true, "course is required"]
 				},

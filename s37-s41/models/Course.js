@@ -22,7 +22,7 @@ const courseSchema = new mongoose.Schema({
 		// The "new" date expression intantiates the current data
 		default: new Date()
 	},
-	enrolees : [
+	enrollees : [
 			{
 				userId : {
 					type: String,

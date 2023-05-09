@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors")
 const app = express();
 const userRoutes = require("./routes/user.js");
+const courseRoutes = require("./routes/course");
 
 // MongoDB Connection using SRV Link
 mongoose.connect("mongodb+srv://admin:admin123@zuitt-bootcamp.ncfarws.mongodb.net/Course_Booking_System?retryWrites=true&w=majority",
@@ -22,6 +23,7 @@ app.use(cors());
 
 // Defines the "/users" string to be included for all the user routes defined in the "user.js" route file.
 app.use("/users", userRoutes);
+app.use("/courses", courseRoutes);
 
 // PORT LISTENING
 if(require.main === module){
