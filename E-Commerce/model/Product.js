@@ -17,20 +17,15 @@ const productSchema = new mongoose.Schema({
 		type: String,
 	default: "active"
 	},
-	category: [
-
-			{	
-				productId : {
-					type : String,
+	productId : {
+		type : String,
 					required : [true, "course is required"]
 				},
-				status : {
-					type : String,
-				default: "Active"
-				}
-			}
-		],
-	numberOfStock: {
+	status : {
+		type : String,
+	default: "Active"
+	},
+    numberOfStock: {
 		type: Number,
 		min: 10
 	} 
