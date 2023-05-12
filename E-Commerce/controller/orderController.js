@@ -3,9 +3,94 @@ const User = require("../model/User.js");
 const Product = require("../model/Product.js");
 
 
+/*module.exports.userCheckOut = (data) => {
+    return Product.findById(data.reqBody.productId).then(product => {
+        console.log(product)
+        if (product == null) {
+            return "the product is not available"
+        }
+        else {
+            let newOrder = new Order ({
+                userId: data.userId,
+                products: {
+                    productId: product.id,
+                    quantity: data.reqBody.quantity
+                },
+                totalAmount: product.price * data.reqBody.quantity
+            });
 
-module.exports.userCheckOut = (data) => {
-	return Product.findById(data.reqBody.products.productId).map(product => {
+            return newOrder.save().then((order, error) => {
+                if(error) {
+                    return false
+                } else {
+                    console.log(order)
+                    return true
+                }
+            })
+        }
+    })
+}
+
+*/
+module.exports.checkOut = (reqParams, reqBody) => {
+	if(!reqBody.isAdmin){
+		return Product.findOne({_id: reqParams.productId}).then(res => {
+			let data = []
+
+			data.push({
+				productId:res._id,
+				price: res.price,
+				quantity: reqBody.quantity.quantity,
+
+			})
+
+			let newOrder = new Order({
+				totalAmount: res.price * reqBody.quantity.quantity,
+				userId: reqBody.id
+			})
+
+			return newOrder.save().then((res, err) => {
+				if(err){
+					return "something wen wrong"
+				} else {
+					return "your order has been received"
+				}
+			})
+		})
+	} else{
+		return Promise.resolve("Admin can't check out!")
+	}
+}
+
+
+module.exports.getorders = () => {
+	return Order.find({}).then(result => {
+		return result
+	})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*module.exports.userCheckOut = (data) => {
+	return Product.findById(data.reqBody.productId).then(product => {
 		console.log(product)
 		if (product == null) {
 			return "the product is not available"
@@ -32,26 +117,15 @@ module.exports.userCheckOut = (data) => {
 	})
 }
 
-/*module.exports.userCheckOut = (data) => {
-	const order = Product.findById(data.reqBody.products.productId).map(product => {
-		let newOrder = new Order ({
-			userId: data.userId,
-			products: {
-				productId: product.id,
-				quantity: data.reqBody.quantity
-			},
-			totalAmount: product.price * data.reqBody.quantity
-		});
-	})
-}
 */
+
 
 /*module.exports.userCheckOut = (data) => {
 	const orderedItems = data.reqBody.map(products => {
 		console.log(products)
 	})
 }
-*/
+
 
 
 
@@ -183,3 +257,33 @@ module.exports.userCheckOut = (data) => {
 	})
 
 }*/
+
+/*
+module.exports.userCheckOut = (data) => {
+		return Product.findById(data.reqBody.productId).then(product => {
+			console.log(product)
+			if (product == null) {
+				return "the product is not available"
+			}
+			else {
+				let newOrder = new Order ({
+					userId: data.userId,
+					products: {
+						productId: product.id,
+						quantity: data.reqBody.quantity
+					},
+					totalAmount: product.price * data.reqBody.quantity
+				});
+
+				return newOrder.save().then((order, error) => {
+					if(error) {
+						return false
+					} else {
+						console.log(order)
+						return true
+					}
+				})
+			}
+		})
+	}
+	*/

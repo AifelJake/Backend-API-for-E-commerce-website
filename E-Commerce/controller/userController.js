@@ -11,7 +11,7 @@ module.exports.registerUser = (reqBody) => {
 		password: bcrypt.hashSync(reqBody.password, 10)
 	})
 
-	newUser.save().then((user, error) => {
+	return newUser.save().then((user, error) => {
 		if (error) {
 			return false;
 		} else {

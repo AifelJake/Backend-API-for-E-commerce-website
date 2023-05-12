@@ -19,7 +19,7 @@ const productSchema = new mongoose.Schema({
 	},
 	productId : {
 		type : String,
-					required : [true, "course is required"]
+/*					required : [true, "course is required"]*/
 				},
 	status : {
 		type : String,
